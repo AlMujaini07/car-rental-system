@@ -18,6 +18,7 @@ private:
 public:
     // Constructor
     Customer(string name, int age,string licenseNumber, bool hasValidLicense);
+    Customer() {}
 
     // Destructor
     ~Customer();
@@ -39,7 +40,6 @@ public:
     void addBooking(string bookingId); //Booking instead of string
     void removeBooking(string bookingId); // Booking instead of string
 
-    // Core methods
     // Returns true if age >= 18 and has a valid license
     bool checkEligibility() const;
 
