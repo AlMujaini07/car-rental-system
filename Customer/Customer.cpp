@@ -13,17 +13,17 @@ Customer::~Customer() {
 }
 
 //Getters
-string Customer::getName() const { return name; }
+string Customer::getName() const {return name;}
 int Customer::getAge() const { return age; }
-string Customer::getLicenseNumber() const { return licenseNumber; }
-bool Customer::getHasValidLicense() const { return hasValidLicense; }
-vector<string> Customer::getActiveBookings() const { return activeBookings; } // vector<Booking>
+string Customer::getLicenseNumber() const {return licenseNumber;}
+bool Customer::getHasValidLicense() const {return hasValidLicense;}
+vector<string> Customer::getActiveBookings() const {return activeBookings;} // vector<Booking>
 
 //Setters
-void Customer::setName(string newName) { name = newName; }
-void Customer::setAge(int newAge) { age = newAge; }
-void Customer::setLicenseNumber(string newLicense) { licenseNumber = newLicense; }
-void Customer::setHasValidLicense(bool status) { hasValidLicense = status; }
+void Customer::setName(string newName) {name = newName;}
+void Customer::setAge(int newAge) {age = newAge;}
+void Customer::setLicenseNumber(string newLicense) {licenseNumber = newLicense;}
+void Customer::setHasValidLicense(bool status) {hasValidLicense = status;}
 
 //Booking management
 void Customer::addBooking(string bookingId) { //Booking instead of string
@@ -56,8 +56,8 @@ bool Customer::hasUnpaidBookings() const {
 
 void Customer::displayInfo() const {
     cout << "=== Customer Info ===\n";
-    cout << "Name:    " << name << "\n";
-    cout << "Age:     " << age << "\n";
+    cout << "Name: " << name << "\n";
+    cout << "Age: " << age << "\n";
     cout << "License: " << licenseNumber << "\n";
     cout << "Valid License: " << (hasValidLicense ? "Yes" : "No") << "\n";
     cout << "Active Bookings: " << activeBookings.size() << "\n";
