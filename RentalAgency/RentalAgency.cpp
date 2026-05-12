@@ -11,7 +11,7 @@ RentalAgency::RentalAgency(string name) {
 }
 //destructor
 RentalAgency::~RentalAgency() {
-    for (int=0;i<bookings.size();i++) {
+    for (int i=0;i<bookings.size();i++) {
         delete bookings[i];
     }
     bookings.clear();
@@ -29,8 +29,8 @@ void RentalAgency::removeCar(string plate) {
             cars.erase(cars.begin()+i);
             return;
         }
-        throw runtime_error("Car not found");
     }
+    throw runtime_error("Car not found");
 }
 Car* RentalAgency::findCarByPlate(string plate) {
     for (int i=0;i<cars.size();i++) {
@@ -60,7 +60,7 @@ void RentalAgency::registerCustomer(Customer* customer) {
 Customer* RentalAgency::findCustomerByLicense(string license)const {
     for (int i=0;i<customers.size();i++) {
         if (customers[i]->getLicenseNumber()==license) {
-            return customers[i]
+            return customers[i];
         }
     }
     return nullptr;
@@ -70,9 +70,9 @@ int RentalAgency::getTotalCustomers()const {
 }
 //booking related methods;
 //most imp class
-Booking*RentalAgency::makeBooking(Customer* customer,Cars* car,time_t start,time_t end,RentalPlan* plan) {
+Booking*RentalAgency::makeBooking(Customer* customer,Car* car,time_t start,time_t end,RentalPlan* plan) {
     if (!customer->checkEligibility()) {
-        throw runtime_error("Customer is not eligable");
+        throw runtime_error("Customer is not eligible");
     }
     if (!car->getAvailabilityStatus()) {
         throw runtime_error("Car is not available");
@@ -82,17 +82,17 @@ Booking*RentalAgency::makeBooking(Customer* customer,Cars* car,time_t start,time
     }
     string id="B"+to_string(bookingCounter);
     bookingCounter++;
-    booking* b=new Booking(id,customer,car,start,end,plan);
+    Booking* b=new Booking(id,customer,car,start,end,plan);
     car->SetAvailabilityStatus(false);
     customer->addBooking(id);
     bookings.push_back(b);
     return b;
 }
 void RentalAgency::cancelBooking(string bookingID) {
-    for(int i=0;i<booking.size();i++) {
+    for(int i=0;i<bookings.size();i++) {
         if (bookings[i]->getBookingID()==bookingID) {
             bookings[i]->getCar()->SetAvailabilityStatus(true);
-            bookings[i]->getCustomer()->removeBooking(bookingId);
+            bookings[i]->getCustomer()->removeBooking(bookingID);
             bookings[i]->setStatus("Cancelled");
             return;
         }
@@ -100,7 +100,7 @@ void RentalAgency::cancelBooking(string bookingID) {
     throw runtime_error("Booking not found");
 }
 Booking* RentalAgency::findBooking(string bookingID) {
-    for (int i=0;i<booking.size();i++) {
+    for (int i=0;i<bookings.size();i++) {
         if (bookings[i]->getBookingID()==bookingID) {
             return bookings[i];
         }
