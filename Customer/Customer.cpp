@@ -3,29 +3,29 @@
 #include <algorithm>
 //I need to include "Booking.h" here
 
-// Constructor
+//Constructor
 Customer::Customer(string name, int age,string licenseNumber, bool hasValidLicense): name(name), age(age),licenseNumber(licenseNumber), hasValidLicense(hasValidLicense) {}
 
-// Destructor
+//Destructor
 Customer::~Customer() {
     cout<<"Deleting Customer";
     activeBookings.clear();
 }
 
-// Getters
+//Getters
 string Customer::getName() const { return name; }
 int Customer::getAge() const { return age; }
 string Customer::getLicenseNumber() const { return licenseNumber; }
 bool Customer::getHasValidLicense() const { return hasValidLicense; }
 vector<string> Customer::getActiveBookings() const { return activeBookings; } // vector<Booking>
 
-// Setters
+//Setters
 void Customer::setName(string newName) { name = newName; }
 void Customer::setAge(int newAge) { age = newAge; }
 void Customer::setLicenseNumber(string newLicense) { licenseNumber = newLicense; }
 void Customer::setHasValidLicense(bool status) { hasValidLicense = status; }
 
-// Booking management
+//Booking management
 void Customer::addBooking(string bookingId) { //Booking instead of string
     activeBookings.push_back(bookingId);
     cout<<"Booking ["+ bookingId+"] added\n";
@@ -38,7 +38,6 @@ void Customer::removeBooking(string bookingId) { // Here I used an iterator to f
     }
 }
 
-// Core methods
 bool Customer::checkEligibility() const {
     if (age < 18) {
         cout << "   Not eligible: customer is underage (age " << age << ").\n";
@@ -64,7 +63,7 @@ void Customer::displayInfo() const {
     cout << "Active Bookings: " << activeBookings.size() << "\n";
 }
 
-// Compare License Numbers
+//Compare License Numbers
 bool Customer::operator==(const Customer& other) const {
     return licenseNumber == other.licenseNumber;
 }
