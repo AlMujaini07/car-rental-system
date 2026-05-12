@@ -18,11 +18,11 @@ class Booking {
         Car* car;
         time_t startDate;
         time_t endDate;
-        string Status; //Status of the booking Active,Cancelled,Completed
+        string status; //Status of the booking Active,Cancelled,Completed
         RentalPlan* rentalPlan;
         DeliveryService* deliveryService;
     public:
-        Booking(string bookingID, Customer* customer, Car* car, time_t startDate, time_t endDate, RentalPlan rentalPlan, DeliveryService* deliveryService= nullptr);
+        Booking(string bookingID, Customer* customer, Car* car, time_t startDate, time_t endDate, RentalPlan* rentalPlan, DeliveryService* deliveryService= nullptr);
         //nullptr because deliveryService is still not decided (because we dont know if we will have selfpickup or keep that option as null or nothing).
         ~Booking();
         //Getters:

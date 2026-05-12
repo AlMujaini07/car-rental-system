@@ -15,7 +15,7 @@ double LimitedKM::calculateCost(double pricePerDay, int days, double kmDriven){
 
 void LimitedKM::displayInfo(){
     cout<<"Plan: Limited KM"<<endl;
-    cout<<"KM cap: "<<kmCap<< "km"<<endl;
+    cout<<"KM cap: "<<kmCap<< " km"<<endl;
     cout<<"Extra Charge: "<<extraChargePerKm<<" OMR/km over cap"<<endl;
 }
 
