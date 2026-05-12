@@ -43,7 +43,7 @@ int Booking::getNumDays() const{
 
 double Booking::calculateTotalCost() const{
     int days=getNumDays();
-    double kmDrivern= car->getKmDrivenThisRental();
+    double kmDriven= car->getKmDrivenThisRental();
     double pricePerDay= car->getPricePerDay();
     return rentalPlan->calculateCost(pricePerDay, days, kmDriven);
 }
@@ -55,8 +55,8 @@ void Booking::displayInfo() const{
     cout<<"Booking ID: "<<bookingID<<endl;
     cout<<"Customer:   "<<customer->getName()<<endl;
     cout<<"Car:        "<<car->getBrand()<<" "<< car->getModel()<<endl;
-    cout<<"Start Date: "<<s->tm_mday<<"-"<<setfill("0")<<setw(2)<<(s->tm_mon+1)<<"-"<<(s->tm_year+1900)<<endl;
-    cout<<"End Date:   "<<e->tm_mday<<"-"<<setfill("0")<<setw(2)<<(e->tm_mon+1)<<"-"<<(e->tm_year+1900)<<endl;
+    cout<<"Start Date: "<<s->tm_mday<<"-"<<setfill('0')<<setw(2)<<(s->tm_mon+1)<<"-"<<(s->tm_year+1900)<<endl;
+    cout<<"End Date:   "<<e->tm_mday<<"-"<<setfill('0')<<setw(2)<<(e->tm_mon+1)<<"-"<<(e->tm_year+1900)<<endl;
     cout<<"Days:       "<<getNumDays()<<endl;
     cout<<"Status:     "<<status<<endl;
     rentalPlan->displayInfo();
