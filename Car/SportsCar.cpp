@@ -5,15 +5,13 @@ SportsCar::SportsCar(){}
 
 // Parameterized Constructor
 SportsCar::SportsCar(string Brand, string Model, string SubModel, int Year, double PricePerDay,
-    string NumberPlate, bool AvailabilityStatus, double TotalKmDriven,
+    string NumberPlate, double TotalKmDriven,
     double KmDrivenThisRental, double FuelLevel, int NumSeats, string Color,
     int horsepower, int Torque, bool hasTurbo, int TopSpeed, double ZeroToHundred)
-    : Car(Brand, Model, SubModel, Year, PricePerDay, NumberPlate, AvailabilityStatus,
-          TotalKmDriven, KmDrivenThisRental, FuelLevel, NumSeats, Color),
+    : Car(Brand, Model, SubModel, Year, PricePerDay, NumberPlate,
+        TotalKmDriven, KmDrivenThisRental, FuelLevel, NumSeats, Color),
       horsepower(horsepower), Torque(Torque), hasTurbo(hasTurbo), TopSpeed(TopSpeed), ZeroToHundred(ZeroToHundred) {}
 
-// Destructor
-SportsCar::~SportsCar() {}
 
 // Getters
 int SportsCar::getHorsepower() { return horsepower; }

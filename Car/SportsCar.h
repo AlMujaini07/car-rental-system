@@ -13,7 +13,7 @@ class SportsCar : public Car {
     public:
     SportsCar(); // Default Constructor
     SportsCar(string Brand, string Model, string SubModel,int Year, double PricePerDay,
-        string NumberPlate, bool AvailabilityStatus, double TotalKmDriven,
+        string NumberPlate, double TotalKmDriven,
         double KmDrivenThisRental, double FuelLevel, int NumSeats, string Color, int horsepower,
         int Torque, bool hasTurbo, int TopSpeed, double ZeroToHundred);
     ~SportsCar() {} // Destrcutor
