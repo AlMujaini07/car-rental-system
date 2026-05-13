@@ -44,7 +44,7 @@ Car* RentalAgency::findCarByPlate(string plate) {
 vector<Car*>RentalAgency::searchAvailableCars(double minPrice,double maxPrice)const {
     vector<Car*> results;
     for (int i=0;i<cars.size();i++) {
-        if (cars[i]->getAvailabilityStatus() and cars[i]->getPricePerDay()>=minPrice and cars[i]->getPricePerDay()<=maxPrice) {
+        if (cars[i]->getPricePerDay()>=minPrice && cars[i]->getPricePerDay()<=maxPrice) {
             results.push_back(cars[i]);
         }
     }
@@ -69,13 +69,22 @@ int RentalAgency::getTotalCustomers()const {
     return customers.size();
 }
 //booking related methods;
-//most imp class
+bool RentalAgency::isCarAvailable(Car* car, time_t start, time_t end) const {
+    for (int i = 0; i < bookings.size(); i++) {
+        if (bookings[i]->getCar() == car && bookings[i]->getStatus() == "Active") {
+            if (start < bookings[i]->getEndDate() && end > bookings[i]->getStartDate())
+                return false;
+        }
+    }
+    return true;
+}
+
 Booking*RentalAgency::makeBooking(Customer* customer,Car* car,time_t start,time_t end,RentalPlan* plan) {
     if (!customer->checkEligibility()) {
         throw runtime_error("Customer is not eligible");
     }
-    if (!car->getAvailabilityStatus()) {
-        throw runtime_error("Car is not available");
+    if (!isCarAvailable(car, start, end)) {
+        throw runtime_error("Car is not available during this period");
     }
     if (end<=start) {
         throw runtime_error("End date must be after Start date");
@@ -83,7 +92,6 @@ Booking*RentalAgency::makeBooking(Customer* customer,Car* car,time_t start,time_
     string id="B"+to_string(bookingCounter);
     bookingCounter++;
     Booking* b=new Booking(id,customer,car,start,end,plan);
-    car->SetAvailabilityStatus(false);
     customer->addBooking(id);
     bookings.push_back(b);
     return b;
@@ -91,7 +99,6 @@ Booking*RentalAgency::makeBooking(Customer* customer,Car* car,time_t start,time_
 void RentalAgency::cancelBooking(string bookingID) {
     for(int i=0;i<bookings.size();i++) {
         if (bookings[i]->getBookingID()==bookingID) {
-            bookings[i]->getCar()->SetAvailabilityStatus(true);
             bookings[i]->getCustomer()->removeBooking(bookingID);
             bookings[i]->setStatus("Cancelled");
             return;

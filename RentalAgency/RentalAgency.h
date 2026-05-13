@@ -37,6 +37,7 @@ public:
     int getTotalCustomers()const;
 
     //booking related methods
+    bool isCarAvailable(Car* car, time_t start, time_t end) const;
     Booking* makeBooking(Customer* customer,Car* car,time_t start,time_t end,RentalPlan* plan);
     void cancelBooking(string bookingID);
     Booking* findBooking(string bookingID);
