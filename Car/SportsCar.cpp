@@ -1,7 +1,7 @@
 #include "SportsCar.h"
 
 // Default Constructor
-SportsCar::SportsCar(){}
+SportsCar::SportsCar() : Car(), horsepower(0), Torque(0), hasTurbo(false), TopSpeed(0), ZeroToHundred(0.0) {}
 
 // Parameterized Constructor
 SportsCar::SportsCar(string Brand, string Model, string SubModel, int Year, double PricePerDay,
