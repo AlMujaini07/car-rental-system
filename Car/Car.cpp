@@ -1,13 +1,13 @@
 #include "Car.h"
 // Construtor
 Car::Car() : Brand(""), Model(""), SubModel(""), Year(0), PricePerDay(0.0),
-    NumberPlate(""), AvailabilityStatus(true), TotalKmDriven(0.0),
+    NumberPlate(""), TotalKmDriven(0.0),
      KmDrivenThisRental(0.0), FuelLevel(0.0), NumSeats(0), Color("") {}
 
 Car::Car(string Brand, string Model, string SubModel,int Year, double PricePerDay,
-    string NumberPlate, bool AvailabilityStatus, double TotalKmDriven,
+    string NumberPlate, double TotalKmDriven,
     double KmDrivenThisRental, double FuelLevel, int NumSeats, string Color) : Brand(Brand), Model(Model), SubModel(SubModel) ,Year(Year), PricePerDay(PricePerDay),
-    NumberPlate(NumberPlate), AvailabilityStatus(AvailabilityStatus),
+    NumberPlate(NumberPlate),
     KmDrivenThisRental(KmDrivenThisRental),TotalKmDriven(TotalKmDriven), FuelLevel(FuelLevel), NumSeats(NumSeats),
     Color(Color) {}
 
@@ -29,9 +29,6 @@ double Car::getPricePerDay(){
 }
 string Car::getNumberPlate(){
     return NumberPlate;
-}
-bool Car::getAvailabilityStatus(){
-    return AvailabilityStatus;
 }
 double Car::getTotalKmDriven(){
     return TotalKmDriven;
@@ -68,9 +65,6 @@ void Car::SetPricePerDay(double PricePerDay){
 void Car::SetNumberPlate(string NumberPlate){
     this->NumberPlate = NumberPlate;
 }
-void Car::SetAvailabilityStatus(bool AvailabilityStatus){
-    this->AvailabilityStatus = AvailabilityStatus;
-}
 void Car::SetTotalKmDriven(double TotalKmDriven){
     this->TotalKmDriven = TotalKmDriven;
 }
@@ -96,12 +90,6 @@ void Car::displayInfo(){
     cout << "Car Name and Model: " << Brand << " " << Model << " " << SubModel << " " << Year << endl;
     cout << "The price per day is " << PricePerDay << " OMR" << endl;
     cout << "The number plate is " << NumberPlate << endl;
-    if (AvailabilityStatus){
-        cout << "The Car is Currently Available" << endl;
-    }
-    else{
-        cout << "The Car Currently isn't Available" << endl;
-    }
     cout << "The number of seats is " << NumSeats << endl;
     cout << "The color of car is " << Color << endl;
 }

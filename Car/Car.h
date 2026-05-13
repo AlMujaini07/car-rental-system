@@ -14,7 +14,6 @@ class Car{
     int Year;   // 2018
     double PricePerDay; // 40 OMR per Day
     string NumberPlate; // "5542 AD"
-    bool AvailabilityStatus; // True = Available
     double TotalKmDriven; // 70,532 KM on ODO
     double KmDrivenThisRental;
     double FuelLevel;   // 54.3% Fuel left
@@ -25,7 +24,7 @@ class Car{
     // Construtor
     Car();
     Car(string Brand, string Model, string SubModel,int Year, double PricePerDay,
-        string NumberPlate, bool AvailabilityStatus, double TotalKmDriven,
+        string NumberPlate, double TotalKmDriven,
         double KmDrivenThisRental, double FuelLevel, int NumSeats, string Color);
     // Destructor
     virtual ~Car();
@@ -37,7 +36,6 @@ class Car{
     int getYear();
     double getPricePerDay();
     string getNumberPlate();
-    bool getAvailabilityStatus();
     double getTotalKmDriven();
     double getKmDrivenThisRental();
     double getFuelLevel();
@@ -51,7 +49,6 @@ class Car{
     void SetYear(int Year);
     void SetPricePerDay(double PricePerDay);
     void SetNumberPlate(string NumberPlate);
-    void SetAvailabilityStatus(bool AvailabilityStatus);
     void SetTotalKmDriven(double TotalKmDriven);
     void SetKmDrivenThisRental(double KmDrivenThisRental);
     void SetFuelLevel(double FuelLevel);
