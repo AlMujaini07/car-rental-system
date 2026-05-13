@@ -6,7 +6,7 @@ using namespace std;
 
 //constructor
 RentalAgency::RentalAgency(string name) {
-    agnecyName=name;        //eg: Muscat Car rentals
+    agencyName=name;        //eg: Muscat Car rentals
     bookingCounter=1;       //sets the booking counter eg: B1 ... B2
 }
 //destructor

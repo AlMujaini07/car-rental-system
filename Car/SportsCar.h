@@ -16,7 +16,7 @@ class SportsCar : public Car {
         string NumberPlate, bool AvailabilityStatus, double TotalKmDriven,
         double KmDrivenThisRental, double FuelLevel, int NumSeats, string Color, int horsepower,
         int Torque, bool hasTurbo, int TopSpeed, double ZeroToHundred);
-    ~SportsCar(){} // Destrcutor
+    ~SportsCar() {} // Destrcutor
 
     // setters
     void setHorsepower(int Horsepower);
