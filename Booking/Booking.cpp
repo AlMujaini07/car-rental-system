@@ -13,7 +13,8 @@ time_t Booking::makeDate(int day, int month, int year) {
 
 //Constructor: 
 Booking::Booking(string bookingID, Customer* customer, Car* car, time_t startDate, time_t endDate, RentalPlan* rentalPlan,DeliveryService* deliveryService)
-: bookingID(bookingID), customer(customer), car(car), startDate(startDate), endDate(endDate), status("Active"), rentalPlan(rentalPlan), deliveryService(deliveryService)
+: bookingID(bookingID), customer(customer), car(car), startDate(startDate), endDate(endDate), status("Active"), rentalPlan(rentalPlan), deliveryService(deliveryService), 
+payment(nullptr)
 {
     if (endDate< startDate)
         throw invalid_argument("End date cannot be before the start date.");//this is why we used <stdexcept>
@@ -31,11 +32,12 @@ time_t Booking::getEndDate() const {return endDate;}
 string Booking::getStatus() const {return status;}
 RentalPlan* Booking::getRentalPlan() const {return rentalPlan;}
 DeliveryService* Booking::getDeliveryService() const {return deliveryService;}
+Payment* Booking::getPayment() const{return payment;}
 
 //Setters:
 void Booking::setStatus(string newStatus){status= newStatus;}
 void Booking::setDeliveryService(DeliveryService* ds) {deliveryService= ds;}
-
+void Booking::setPayment(Payment* p){payment=p;}
 //Class methods:
 int Booking::getNumDays() const{
     return (int)(difftime(endDate, startDate)/86400);

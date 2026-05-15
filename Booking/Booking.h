@@ -7,6 +7,7 @@
 #include "RentalPlan.h"
 #include "../Car/Car.h"
 #include "../Customer/Customer.h"
+#include "../Payment/Payment.h"
 using namespace std;
 
 class DeliveryService; //This is just a forward declaration member 4 will implement it according to the devided classes.
@@ -21,6 +22,7 @@ class Booking {
         string status; //Status of the booking Active,Cancelled,Completed
         RentalPlan* rentalPlan;
         DeliveryService* deliveryService;
+        Payment* payment;
     public:
         Booking(string bookingID, Customer* customer, Car* car, time_t startDate, time_t endDate, RentalPlan* rentalPlan, DeliveryService* deliveryService= nullptr);
         //nullptr because deliveryService is still not decided (because we dont know if we will have selfpickup or keep that option as null or nothing).
@@ -34,9 +36,11 @@ class Booking {
         string getStatus() const;
         RentalPlan* getRentalPlan() const;
         DeliveryService* getDeliveryService() const;
+        Payment* getPayment() const;
         //Setters:
         void setStatus(string status);
         void setDeliveryService(DeliveryService* ds);
+        void setPayment(Payment* payment);
         //Class methods:
         int getNumDays() const;
         double calculateTotalCost() const;
