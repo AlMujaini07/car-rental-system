@@ -1,38 +1,39 @@
 #include "Customer.h"
+#include "Booking.h"
 #include <iostream>
 #include <algorithm>
-//I need to include "Booking.h" here
 
 //Constructor
-Customer::Customer(string name, int age,string licenseNumber, bool hasValidLicense): name(name), age(age),licenseNumber(licenseNumber), hasValidLicense(hasValidLicense) {}
+Customer::Customer(string name, int age, string licenseNumber, bool hasValidLicense)
+    : name(name), age(age), licenseNumber(licenseNumber), hasValidLicense(hasValidLicense) {}
 
 //Destructor
 Customer::~Customer() {
-    cout<<"Deleting Customer";
-    activeBookings.clear();
+    cout << "Deleting Customer";
+    activeBookings.clear(); // Clears pointers; does NOT delete the Booking objects (owned by the system)
 }
 
 //Getters
-string Customer::getName() const {return name;}
+string Customer::getName() const { return name; }
 int Customer::getAge() const { return age; }
-string Customer::getLicenseNumber() const {return licenseNumber;}
-bool Customer::getHasValidLicense() const {return hasValidLicense;}
-vector<string> Customer::getActiveBookings() const {return activeBookings;} // vector<Booking>
+string Customer::getLicenseNumber() const { return licenseNumber; }
+bool Customer::getHasValidLicense() const { return hasValidLicense; }
+vector<Booking*> Customer::getActiveBookings() const { return activeBookings; } // Changed return type
 
 //Setters
-void Customer::setName(string newName) {name = newName;}
-void Customer::setAge(int newAge) {age = newAge;}
-void Customer::setLicenseNumber(string newLicense) {licenseNumber = newLicense;}
-void Customer::setHasValidLicense(bool status) {hasValidLicense = status;}
+void Customer::setName(string newName) { name = newName; }
+void Customer::setAge(int newAge) { age = newAge; }
+void Customer::setLicenseNumber(string newLicense) { licenseNumber = newLicense; }
+void Customer::setHasValidLicense(bool status) { hasValidLicense = status; }
 
 //Booking management
-void Customer::addBooking(string bookingId) { //Booking instead of string
-    activeBookings.push_back(bookingId);
-    cout<<"Booking ["+ bookingId+"] added\n";
+void Customer::addBooking(Booking* booking) { // Changed parameter from string to Booking*
+    activeBookings.push_back(booking);
+    cout << "Booking [" + booking->getBookingID() + "] added\n";
 }
 
-void Customer::removeBooking(string bookingId) { // Here I used an iterator to find a pointer to Booking
-    auto it = find(activeBookings.begin(), activeBookings.end(), bookingId);
+void Customer::removeBooking(Booking* booking) { // Changed parameter from string to Booking*
+    auto it = find(activeBookings.begin(), activeBookings.end(), booking);
     if (it != activeBookings.end()) {
         activeBookings.erase(it);
     }
@@ -51,7 +52,14 @@ bool Customer::checkEligibility() const {
 }
 
 bool Customer::hasUnpaidBookings() const {
-    // check if Booking is paid
+    for (Booking* booking : activeBookings) {
+        // A booking is unpaid if it has no Payment object attached,
+        // or if the booking is still Active (not yet completed/cancelled)
+        if (booking->getPayment() == nullptr && booking->getStatus() == "Active") {
+            return true;
+        }
+    }
+    return false;
 }
 
 void Customer::displayInfo() const {
