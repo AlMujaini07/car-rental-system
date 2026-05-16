@@ -3,9 +3,10 @@
 
 #include <string>
 #include <vector>
-//I need to include "Booking.h" here
+#include "Booking.h"
 using namespace std;
 
+class Booking; // Forward declaration to break circular include
 
 class Customer {
 private:
@@ -13,11 +14,11 @@ private:
     int age;
     string licenseNumber;
     bool hasValidLicense;
-    vector<string> activeBookings; // This has to be vector<Booking>
+    vector<Booking*> activeBookings; // Changed from vector<string>
 
 public:
     // Constructor
-    Customer(string name, int age,string licenseNumber, bool hasValidLicense);
+    Customer(string name, int age, string licenseNumber, bool hasValidLicense);
     Customer() {}
 
     // Destructor
@@ -28,7 +29,7 @@ public:
     int getAge() const;
     string getLicenseNumber() const;
     bool getHasValidLicense() const;
-    vector<string> getActiveBookings() const; //vector<Booking>
+    vector<Booking*> getActiveBookings() const; // Changed from vector<string>
 
     // Setters
     void setName(string name);
@@ -37,13 +38,13 @@ public:
     void setHasValidLicense(bool status);
 
     // Booking management
-    void addBooking(string bookingId); //Booking instead of string
-    void removeBooking(string bookingId); // Booking instead of string
+    void addBooking(Booking* booking);    // Changed from string
+    void removeBooking(Booking* booking); // Changed from string
 
     // Returns true if age >= 18 and has a valid license
     bool checkEligibility() const;
 
-    // Returns true if customer has any active bookings
+    // Returns true if customer has any active bookings that are unpaid
     bool hasUnpaidBookings() const;
 
     // Display customer info
