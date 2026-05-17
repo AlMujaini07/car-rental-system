@@ -30,17 +30,17 @@ class Car{
     virtual ~Car();
 
     // Getters
-    string getBrand();
-    string getModel();
-    string getSubModel();
-    int getYear();
-    double getPricePerDay();
-    string getNumberPlate();
-    double getTotalKmDriven();
-    double getKmDrivenThisRental();
-    double getFuelLevel();
-    int getNumSeats();
-    string getColor();
+    string getBrand() const;
+    string getModel() const;
+    string getSubModel() const;
+    int getYear() const;
+    double getPricePerDay() const;
+    string getNumberPlate() const;
+    double getTotalKmDriven() const;
+    double getKmDrivenThisRental() const;
+    double getFuelLevel() const;
+    int getNumSeats() const;
+    string getColor() const;
 
     //setters
     void SetBrand(string Brand);

@@ -12,39 +12,17 @@ Car::Car(string Brand, string Model, string SubModel,int Year, double PricePerDa
     Color(Color) {}
 
 // Getters
-string Car::getBrand(){
-    return Brand;
-}
-string Car::getModel(){
-    return Model;
-}
-string Car::getSubModel(){
-    return SubModel;
-}
-int Car::getYear(){
-    return Year;
-}
-double Car::getPricePerDay(){
-    return PricePerDay;
-}
-string Car::getNumberPlate(){
-    return NumberPlate;
-}
-double Car::getTotalKmDriven(){
-    return TotalKmDriven;
-}
-double Car::getKmDrivenThisRental(){
-    return KmDrivenThisRental;
-}
-double Car::getFuelLevel(){
-    return FuelLevel;
-}
-int Car::getNumSeats(){
-    return NumSeats;
-}
-string Car::getColor(){
-    return Color;
-}
+string Car::getBrand() const { return Brand; }
+string Car::getModel() const { return Model; }
+string Car::getSubModel() const { return SubModel; }
+int Car::getYear() const { return Year; }
+double Car::getPricePerDay() const { return PricePerDay; }
+string Car::getNumberPlate() const { return NumberPlate; }
+double Car::getTotalKmDriven() const { return TotalKmDriven; }
+double Car::getKmDrivenThisRental() const { return KmDrivenThisRental; }
+double Car::getFuelLevel() const { return FuelLevel; }
+int Car::getNumSeats() const { return NumSeats; }
+string Car::getColor() const { return Color; }
 
 //setters
 void Car::SetBrand(string Brand){
