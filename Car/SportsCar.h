@@ -1,4 +1,4 @@
-#ifndef SporstCar_h
+#ifndef SportsCar_h
 #define SportsCar_h
 #include "Car.h"
 
@@ -16,7 +16,7 @@ class SportsCar : public Car {
         string NumberPlate, double TotalKmDriven,
         double KmDrivenThisRental, double FuelLevel, int NumSeats, string Color, int horsepower,
         int Torque, bool hasTurbo, int TopSpeed, double ZeroToHundred);
-    ~SportsCar() {} // Destrcutor
+    ~SportsCar(); // Destrcutor
 
     // setters
     void setHorsepower(int Horsepower);
@@ -26,11 +26,11 @@ class SportsCar : public Car {
     void setZeroToHundred(double ZeroToHundred);
 
     //getters
-    int getHorsepower();
-    int getTorque();
-    bool gethasTurbo();
-    int getTopSpeed();
-    double getZeroToHundred();
+    int getHorsepower() const;
+    int getTorque() const;
+    bool gethasTurbo() const;
+    int getTopSpeed() const;
+    double getZeroToHundred() const;
 
     //methods - overriden
     double getPrice() override;

@@ -12,13 +12,16 @@ SportsCar::SportsCar(string Brand, string Model, string SubModel, int Year, doub
         TotalKmDriven, KmDrivenThisRental, FuelLevel, NumSeats, Color),
       horsepower(horsepower), Torque(Torque), hasTurbo(hasTurbo), TopSpeed(TopSpeed), ZeroToHundred(ZeroToHundred) {}
 
+//Destrcutor
+SportsCar::~SportsCar() {}
+
 
 // Getters
-int SportsCar::getHorsepower() { return horsepower; }
-int SportsCar::getTorque() { return Torque; }
-bool SportsCar::gethasTurbo() { return hasTurbo; }
-int SportsCar::getTopSpeed() { return TopSpeed; }
-double SportsCar::getZeroToHundred() { return ZeroToHundred; }
+int SportsCar::getHorsepower() const { return horsepower; }
+int SportsCar::getTorque() const { return Torque; }
+bool SportsCar::gethasTurbo() const { return hasTurbo; }
+int SportsCar::getTopSpeed() const { return TopSpeed; }
+double SportsCar::getZeroToHundred() const { return ZeroToHundred; }
 
 // Setters
 void SportsCar::setHorsepower(int Horsepower) { this->horsepower = Horsepower; }
