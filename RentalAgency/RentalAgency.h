@@ -9,10 +9,11 @@
 #include "../Customer/Customer.h"
 #include "../Booking/Booking.h"
 #include "../Booking/RentalPlan.h"
+#include "../Payment/Payment.h"
 
 using namespace std;
 
-class RentalAgency {
+class RentalAgency final {
 private:
     string agencyName;
     vector<Car*> cars;
@@ -23,29 +24,28 @@ public:
     RentalAgency(string name);
     ~RentalAgency();
     string getAgencyName()const;
-
     //car related methods
     void addCar(Car* car);
     void removeCar(string plate);
     Car* findCarByPlate(string plate);
     vector<Car*> searchAvailableCars(double minPrice,double maxPrice)const;
     int getTotalCars()const;
-
     //customer related methods
     void registerCustomer(Customer* customer);
     Customer* findCustomerByLicense(string license)const;
     int getTotalCustomers()const;
-
     //booking related methods
-    bool isCarAvailable(Car* car, time_t start, time_t end) const;
+    bool isCarAvailable(Car* car,time_t start,time_t end)const;
     Booking* makeBooking(Customer* customer,Car* car,time_t start,time_t end,RentalPlan* plan);
+    void completeBooking(string bookingID,string paymentMethod);
     void cancelBooking(string bookingID);
     Booking* findBooking(string bookingID);
     int getTotalBookings()const;
-
+    //display
     void displayAllCars()const;
     void displayAvailableCars()const;
     void displayAllCustomers()const;
     void displayAllBookings()const;
+    void displayProfits()const;			//waiting for profits class
 };
 #endif
