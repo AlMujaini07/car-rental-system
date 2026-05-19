@@ -3,10 +3,9 @@
 
 #include <string>
 #include <vector>
-#include "Booking.h"
 using namespace std;
 
-class Booking; // Forward declaration to break circular include
+class Booking;
 
 class Customer {
 private:
